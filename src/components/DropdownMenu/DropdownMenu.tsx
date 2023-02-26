@@ -50,8 +50,6 @@ const DropdownMenu = ({dropdown, activeDropdownId, setActiveDropdownId}: Dropdow
     'dropdown-menu-yBottom': yCoord === 'bottom',
   });
 
-  console.log('DropdownMenu render')
-
   return (
     <div className="dropdown">
       <div className="dropdown-button" onClick={handleClickButton}>
