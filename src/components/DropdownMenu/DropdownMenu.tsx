@@ -8,11 +8,30 @@ type DropdownMenuProps = {
 
 
 const DropdownMenu = ({dropdown}: DropdownMenuProps) => {
-  console.log('dropdown', dropdown)
   const [isOpened, setIsOpened] = useState(false);
 
-  const handleClickButton = () => {
-    setIsOpened(!isOpened);
+  const handleClickButton = (e: React.MouseEvent<HTMLElement>) => {
+    if (isOpened) {
+      setIsOpened(false);
+      return;
+    }
+
+    const screenWidth = document.documentElement.clientWidth;
+    const screenHeight = document.documentElement.clientHeight;
+    console.log('screenWidth/screenHeight', screenWidth, screenHeight);
+
+    const clientRect = e.currentTarget.getBoundingClientRect()
+    console.log('clientRect', clientRect);
+
+    const distanceToLeftEdge = clientRect.left + clientRect.width;
+    const distanceTorightEdge = screenWidth - clientRect.left;
+    console.log('left/right', distanceToLeftEdge, distanceTorightEdge);
+    
+    const distanceToTopEdge = clientRect.top;
+    const distanceToBottomEdge = screenHeight - clientRect.top - clientRect.width;
+    console.log('top/bottom', distanceToTopEdge, distanceToBottomEdge);
+
+    setIsOpened(true);
   };
 
   const handleClickMenuItem = () => {
