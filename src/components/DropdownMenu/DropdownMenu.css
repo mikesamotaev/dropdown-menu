@@ -20,8 +20,27 @@
   width: 260px;
   border-radius: 3px;
   position: absolute;
-  left: 0;
   top: 40px;
+}
+
+.dropdown-menu-xRight {
+  left: 0;
+  right: auto;
+}
+
+.dropdown-menu-xLeft {
+  left: auto;
+  right: 0;
+}
+
+.dropdown-menu-yTop {
+  top: auto;
+  bottom: 40px;
+}
+
+.dropdown-menu-yBottom {
+  top: 40px;
+  bottom: auto;
 }
 
 .dropdown-menu-item {
