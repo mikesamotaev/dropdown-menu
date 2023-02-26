@@ -1,48 +1,45 @@
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import IDropdown from '../../interfaces/IDropdown';
 import cn from 'classnames';
 import './DropdownMenu.css';
 
 type DropdownMenuProps = {
   dropdown: IDropdown,
+  activeDropdownId: number,
+  setActiveDropdownId: Dispatch<SetStateAction<number>>,
 };
 
 
-const DropdownMenu = ({dropdown}: DropdownMenuProps) => {
-  const [isOpened, setIsOpened] = useState<Boolean>(false);
-  const [xCoord, setXcoord] = useState<String>('');
-  const [yCoord, setYcoord] = useState<String>('');
+const DropdownMenu = ({dropdown, activeDropdownId, setActiveDropdownId}: DropdownMenuProps) => {
+  const [xCoord, setXcoord] = useState<string>('');
+  const [yCoord, setYcoord] = useState<string>('');
 
   const handleClickButton = (e: React.MouseEvent<HTMLElement>) => {
-    if (isOpened) {
+    if (activeDropdownId === dropdown.id) {
       setXcoord('');
       setYcoord('');
-      setIsOpened(false);
+      setActiveDropdownId(0);
       return;
     }
 
     const screenWidth = document.documentElement.clientWidth;
     const screenHeight = document.documentElement.clientHeight;
-    console.log('screenWidth/screenHeight', screenWidth, screenHeight);
 
     const clientRect = e.currentTarget.getBoundingClientRect()
-    console.log('clientRect', clientRect);
 
     const distanceToLeftEdge = clientRect.left + clientRect.width;
     const distanceTorightEdge = screenWidth - clientRect.left;
-    console.log('left/right', distanceToLeftEdge, distanceTorightEdge);
     
     const distanceToTopEdge = clientRect.top;
     const distanceToBottomEdge = screenHeight - clientRect.top - clientRect.width;
-    console.log('top/bottom', distanceToTopEdge, distanceToBottomEdge);
 
     setXcoord(distanceToLeftEdge > distanceTorightEdge ? 'left' : 'right');
     setYcoord(distanceToTopEdge > distanceToBottomEdge ? 'top' : 'bottom');
-    setIsOpened(true);
+    setActiveDropdownId(dropdown.id);
   };
 
   const handleClickMenuItem = () => {
-    setIsOpened(false);
+    setActiveDropdownId(0);
   };
 
   const dropdownClasses = cn({
@@ -60,7 +57,7 @@ const DropdownMenu = ({dropdown}: DropdownMenuProps) => {
       <div className="dropdown-button" onClick={handleClickButton}>
         <img src={`assets/icons/${dropdown.mainIcon}.svg`} />
       </div>
-      {isOpened && (
+      {(activeDropdownId === dropdown.id) && (
         <div className={dropdownClasses}>
           {dropdown.list.map((item) => (
             <div className="dropdown-menu-item" key={item.itemText} onClick={handleClickMenuItem}>
