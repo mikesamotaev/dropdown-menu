@@ -9,5 +9,7 @@
 }
 
 .app-grid-cell:nth-child(2n) {
-  justify-self: end;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
