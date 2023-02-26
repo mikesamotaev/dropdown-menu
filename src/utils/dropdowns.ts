@@ -2,6 +2,7 @@ import IDropdown from '../interfaces/IDropdown';
 
 export const dropdowns: IDropdown[] = [
   {
+    id: 1,
     mainIcon: 'plus',
     list: [
       {
@@ -19,6 +20,7 @@ export const dropdowns: IDropdown[] = [
     ]
   },
   {
+    id: 2,
     mainIcon: 'activity',
     list: [
       {
@@ -44,6 +46,7 @@ export const dropdowns: IDropdown[] = [
     ]
   },
   {
+    id: 3,
     mainIcon: 'sun',
     list: [
       {
@@ -57,6 +60,7 @@ export const dropdowns: IDropdown[] = [
     ]
   },
   {
+    id: 4,
     mainIcon: 'code',
     list: [
       {
@@ -78,6 +82,7 @@ export const dropdowns: IDropdown[] = [
     ]
   },
   {
+    id: 5,
     mainIcon: 'user',
     list: [
       {
@@ -95,6 +100,7 @@ export const dropdowns: IDropdown[] = [
     ]
   },
   {
+    id: 6,
     mainIcon: 'globe',
     list: [
       {

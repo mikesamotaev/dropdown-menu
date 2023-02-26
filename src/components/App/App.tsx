@@ -1,29 +1,19 @@
+import { useState } from 'react';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import { dropdowns } from '../../utils/dropdowns'
 import './App.css';
 
 const App = () => {
+  const [activeDropdownId, setActiveDropdownId] = useState<number>(0);
+
   return (
     <div className="app">
       <div className="app-grid">
-        <div className="app-grid-cell">
-          <DropdownMenu dropdown={dropdowns[0]} />
-        </div>
-        <div className="app-grid-cell">
-          <DropdownMenu dropdown={dropdowns[1]} />
-        </div>
-        <div className="app-grid-cell">
-          <DropdownMenu dropdown={dropdowns[2]} />
-        </div>
-        <div className="app-grid-cell">
-          <DropdownMenu dropdown={dropdowns[3]} />
-        </div>
-        <div className="app-grid-cell">
-          <DropdownMenu dropdown={dropdowns[4]} />
-        </div>
-        <div className="app-grid-cell">
-          <DropdownMenu dropdown={dropdowns[5]} />
-        </div>
+        {dropdowns.map((item) => (
+          <div className="app-grid-cell" key={`cell_${item.id}`}>
+            <DropdownMenu dropdown={item} activeDropdownId={activeDropdownId} setActiveDropdownId={setActiveDropdownId} />
+          </div>
+        ))}
       </div>
     </div>
   );
