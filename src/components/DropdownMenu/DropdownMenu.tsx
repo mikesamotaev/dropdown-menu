@@ -28,8 +28,8 @@ const DropdownMenu = ({dropdown}: DropdownMenuProps) => {
         <div className="dropdown-menu">
           {dropdown.list.map((item) => (
             <div className="dropdown-menu-item" key={item.itemText} onClick={handleClickMenuItem}>
-              <span className="dropdown-menu-item-text">{item.itemText}</span>
-              <img className="dropdown-menu-item-icon" src={`assets/icons/${item.itemIcon}.svg`} />
+              <span>{item.itemText}</span>
+              <img src={`assets/icons/${item.itemIcon}.svg`} />
             </div>
           ))}
         </div>

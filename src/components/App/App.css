@@ -1,0 +1,13 @@
+.app {
+  padding: 1rem;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 700px 700px;
+}
+
+.app-grid-cell:nth-child(2n) {
+  justify-self: end;
+}
